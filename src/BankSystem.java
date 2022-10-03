@@ -2,24 +2,24 @@ import java.util.Scanner;
  class UserAgent{
     String name;
     String accId;
-    int amount;
+    double amount =0;
     int moneyOut;
+
     void register(String userInfo){
         accId = userInfo;
         Scanner objId = new Scanner(System.in);
         System.out.println("Enter your name");
         name = objId.nextLine();
-
-
-
-
         System.out.println("User "+name+" with account number " +accId+" has been successfully registered");
     }
-    void deposit(){
+
+    void storeMoney(){
         Scanner cap = new Scanner(System.in);
         System.out.println("Enter the amount of money to deposit : ");
-        amount+=cap.nextInt();
-        System.out.println("You have successfully deposited an amount of "+cap.nextInt() +" Your new balance is "+amount);
+
+        double newAmount = cap.nextDouble();
+        amount += newAmount;
+        System.out.println("You have successfully deposited an amount of "+newAmount +" Your new balance is "+amount);
     }
     void withDrawing(){
         Scanner removal = new Scanner(System.in);
@@ -35,8 +35,10 @@ import java.util.Scanner;
     }
 }
 public class BankSystem{
-     public static void main(String args[]){
+     public static void main(String args[]) throws  Exception{
          UserAgent u1 = new UserAgent();
          u1.register("f9490e1170d24f4591c8811d");
+         u1.storeMoney();
+         u1.withDrawing();
      }
 }
